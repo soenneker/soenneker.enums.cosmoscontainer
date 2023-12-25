@@ -8,5 +8,5 @@
 ## Installation
 
 ```
-Install-Package Soenneker.Enums.CosmosContainer
+dotnet add package Soenneker.Enums.CosmosContainer
 ```
