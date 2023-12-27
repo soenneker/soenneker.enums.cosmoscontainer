@@ -14,7 +14,7 @@
         <AssemblyName>Soenneker.Enums.CosmosContainer</AssemblyName>
         <PackageId>Soenneker.Enums.CosmosContainer</PackageId>
         <PackageTags>cosmos azure container c# .net dotnet</PackageTags>
-        <Copyright>Copyright © 2024 Jake Soenneker</Copyright>
+        <Copyright>Copyright © 2023-2024 Jake Soenneker</Copyright>
         <Authors>Jake Soenneker</Authors>
         <Company>https://soenneker.com</Company>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
