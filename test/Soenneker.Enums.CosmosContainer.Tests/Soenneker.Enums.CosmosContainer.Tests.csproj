@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Soenneker.Enums.CosmosContainer.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Enums.CosmosContainer.csproj" />
     </ItemGroup>
 
 </Project>
