@@ -3,10 +3,10 @@
 namespace Soenneker.Enums.CosmosContainer;
 
 /// <summary>
-/// An abstract enum type for using with Azure Cosmos database utilities <para/>
-/// Obviously this is meant to be derived. Values should be plural and lowercase.
+/// Base class for application-defined Azure Cosmos DB container names.
 /// </summary>
-public abstract class CosmosContainer : NamedSmartEnum<CosmosContainer>
+/// <typeparam name="TContainer">The concrete container type.</typeparam>
+public abstract class CosmosContainer<TContainer> : NamedSmartEnum<TContainer> where TContainer : CosmosContainer<TContainer>
 {
     protected CosmosContainer(string name, int value) : base(name, value)
     {

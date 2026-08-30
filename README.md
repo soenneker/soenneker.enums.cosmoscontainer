@@ -5,7 +5,7 @@
 
 # Soenneker.Enums.CosmosContainer
 
-An abstract enum type for using with Azure Cosmos database utilities Obviously this is meant to be derived. Values should be plural and lowercase.
+A SmartEnum base for defining an application's Azure Cosmos DB container names in one strongly typed place.
 
 ## Install
 
@@ -13,6 +13,35 @@ An abstract enum type for using with Azure Cosmos database utilities Obviously t
 dotnet add package Soenneker.Enums.CosmosContainer
 ```
 
-## What you get
+## Define containers
 
-- `CosmosContainer` — An abstract enum type for using with Azure Cosmos database utilities Obviously this is meant to be derived. Values should be plural and lowercase.
+```csharp
+using Soenneker.Enums.CosmosContainer;
+
+public sealed class AppContainer : CosmosContainer<AppContainer>
+{
+    public static readonly AppContainer Users = new("users", 1);
+    public static readonly AppContainer Orders = new("orders", 2);
+
+    private AppContainer(string name, int value) : base(name, value)
+    {
+    }
+}
+```
+
+The self-referential generic argument is required: `AppContainer` derives from `CosmosContainer<AppContainer>`. This allows the underlying SmartEnum implementation to discover the concrete type's static values.
+
+## Usage
+
+```csharp
+string containerName = AppContainer.Users; // implicit conversion returns "users"
+
+AppContainer parsed = AppContainer.FromName("orders");
+
+foreach (AppContainer container in AppContainer.List)
+    Console.WriteLine($"{container.Value}: {container.Name}");
+```
+
+Use unique integer values. Lowercase plural names such as `users` and `orders` are the repository convention because `Name` is typically passed to Cosmos DB as the physical container name; the base class does not enforce that convention or create containers.
+
+`FromName` and `FromValue` throw when no match exists. Use the corresponding `TryFromName` or `TryFromValue` APIs when parsing configuration or other external input.
