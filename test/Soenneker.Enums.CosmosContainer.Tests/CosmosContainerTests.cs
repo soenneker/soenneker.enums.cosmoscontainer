@@ -12,7 +12,7 @@ public class CosmosContainerTests : HostedUnitTest
     }
 
     [Test]
-    public async Task Derived_values_participate_in_lookup()
+    public async ValueTask Derived_values_participate_in_lookup()
     {
         TestContainer users = TestContainer.Users;
 
