@@ -1,6 +1,7 @@
 using Soenneker.Tests.HostedUnit;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Soenneker.Enums.CosmosContainer.Tests;
 
@@ -12,7 +13,7 @@ public class CosmosContainerTests : HostedUnitTest
     }
 
     [Test]
-    public async ValueTask Derived_values_participate_in_lookup()
+    public async ValueTask Derived_values_participate_in_lookup(CancellationToken cancellationToken)
     {
         TestContainer users = TestContainer.Users;
 
